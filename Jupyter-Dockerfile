@@ -1,0 +1,10 @@
+FROM python-instagram-bot_bot:latest
+
+RUN apt-get update && apt-get -y update
+
+RUN pip install jupyter
+
+COPY notebooks notebooks
+WORKDIR notebooks/
+
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]

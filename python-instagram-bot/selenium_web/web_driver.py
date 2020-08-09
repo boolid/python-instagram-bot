@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException
 import logging
 
@@ -19,6 +20,8 @@ def check_element_exist(driver: webdriver.Chrome, path: str, by: str = 'xpath') 
             driver.find_element_by_xpath(path)
         elif by == 'css':
             driver.find_element_by_css_selector(path)
+        elif by == 'id':
+            driver.find_element(By.ID, path)
         else:
             logger.info(f"Unable to check element using '{by}'")
     except NoSuchElementException:

@@ -4,3 +4,12 @@ services:
     build: .
     volumes:
     - ./python-instagram-bot/screenshots:/python-instagram-bot/screenshots
+  jupyter:
+    build:
+      context: .
+      dockerfile: Jupyter-Dockerfile
+    ports:
+    - 8888:8888
+    volumes:
+    - ./notebooks:/notebooks
+    - ./python-instagram-bot:/python-instagram-bot
